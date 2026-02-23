@@ -1,246 +1,662 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>AlSyed Psychiatric Institute (ASPI) | Karachi</title>
+  <title>AlSyed Psychiatric Institute (ASPI) | Karachi | alsyedpsy.com</title>
+  <meta name="description" content="AlSyed Psychiatric Institute (ASPI) — a premium multi-specialist mental health center in Gulshan-e-Iqbal, Karachi. Psychiatrists & psychologists. Inpatient and outpatient care for males and females. Phone booking available." />
+
+  <!-- Favicon (must be inside /assets) -->
+  <link rel="icon" href="./assets/icon_color.png" />
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;600;700&family=Grand+Hotel&family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;600;700&family=Grand+Hotel&family=Lora:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root{
+      /* Brand-ish colors */
       --green:#00F260;
       --blue:#00C9FF;
-      --dark:#0b0b0d;
-      --text:#ffffff;
+      --azure:#0575E6;
+      --mint:#92FE9D;
+
+      --bg:#0b0b0d;
+      --text:rgba(255,255,255,.92);
       --muted:rgba(255,255,255,.70);
       --card:rgba(255,255,255,.05);
+      --card2:rgba(255,255,255,.08);
       --border:rgba(255,255,255,.12);
+
+      --radius:18px;
+      --shadow:0 18px 50px rgba(0,0,0,.35);
+      --maxw:1120px;
     }
 
-    *{ box-sizing:border-box; margin:0; padding:0; }
-
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
     body{
-      font-family:"Comfortaa", sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(0,201,255,.15), transparent 40%),
-        radial-gradient(circle at top right, rgba(0,242,96,.15), transparent 40%),
-        var(--dark);
+      margin:0;
+      font-family:"Comfortaa", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--text);
-      line-height:1.6;
+      line-height:1.65;
+      background:
+        radial-gradient(1100px 600px at 20% 10%, rgba(0,201,255,.18), transparent 60%),
+        radial-gradient(900px 500px at 85% 15%, rgba(0,242,96,.16), transparent 55%),
+        radial-gradient(900px 700px at 50% 90%, rgba(5,117,230,.12), transparent 55%),
+        linear-gradient(180deg, #050506 0%, var(--bg) 60%, #070708 100%);
     }
 
-    .container{
-      max-width:1100px;
-      margin:auto;
-      padding:20px;
-    }
+    a{ color:inherit; text-decoration:none; }
+    .container{ max-width:var(--maxw); margin:0 auto; padding:0 18px; }
 
-    header{
-      position:sticky;
-      top:0;
-      background:rgba(0,0,0,.4);
+    /* Top bar */
+    .topbar{
+      border-bottom:1px solid rgba(255,255,255,.06);
+      background:rgba(0,0,0,.20);
       backdrop-filter: blur(10px);
-      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .topbar-inner{
+      display:flex; gap:12px; align-items:center; justify-content:space-between;
+      padding:10px 0;
+      font-size:12px;
+      color:var(--muted);
+      flex-wrap:wrap;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:999px;
+      background:rgba(255,255,255,.04);
+    }
+    .dot{
+      width:8px; height:8px; border-radius:99px;
+      background:linear-gradient(90deg, var(--blue), var(--green));
+      box-shadow:0 0 0 4px rgba(0,201,255,.10);
     }
 
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50;
+      background:rgba(0,0,0,.35);
+      backdrop-filter: blur(12px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
     .nav{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:15px 0;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px;
+      padding:14px 0;
     }
-
-    .logo{
-      font-family:"Grand Hotel", cursive;
-      font-size:28px;
-      color:var(--blue);
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width: 200px;
     }
-
-    .btn{
-      padding:10px 16px;
+    .brand img{ height:34px; width:auto; display:block; }
+    .links{
+      display:flex; gap:10px; align-items:center;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .links a{
+      padding:10px 10px;
       border-radius:12px;
+    }
+    .links a:hover{ background:rgba(255,255,255,.06); color:var(--text); }
+
+    .actions{ display:flex; gap:10px; align-items:center; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:11px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
       font-weight:700;
       font-size:13px;
-      border:1px solid var(--border);
-      background:var(--card);
-      color:white;
-      cursor:pointer;
-      text-decoration:none;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease, filter .15s ease;
+      white-space:nowrap;
     }
-
+    .btn:hover{ transform: translateY(-1px); background:rgba(255,255,255,.10); border-color:rgba(255,255,255,.18); }
     .btn-primary{
-      background:linear-gradient(90deg,var(--blue),var(--green));
       border:none;
+      background: linear-gradient(90deg, var(--blue), var(--green));
       color:#062018;
     }
+    .btn-primary:hover{ filter:brightness(1.05); }
+
+    /* Layout */
+    main{ padding:52px 0 16px; }
+    section{ padding:46px 0; }
 
     .hero{
-      padding:70px 0;
-      text-align:center;
-    }
-
-    h1{
-      font-family:"Lora", serif;
-      font-size:40px;
-      margin-bottom:15px;
-    }
-
-    .lead{
-      color:var(--muted);
-      max-width:600px;
-      margin:0 auto 25px;
-    }
-
-    .grid{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:15px;
-      margin-top:30px;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:stretch;
     }
 
     .card{
-      background:var(--card);
-      border:1px solid var(--border);
-      padding:20px;
-      border-radius:16px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .card.pad{ padding:26px; }
+    .card.soft{ background:rgba(255,255,255,.05); box-shadow:none; }
+
+    .hero-left::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(800px 260px at 15% 0%, rgba(0,201,255,.25), transparent 60%),
+                  radial-gradient(800px 260px at 85% 0%, rgba(0,242,96,.22), transparent 55%);
+      opacity:.85;
+      pointer-events:none;
+    }
+    .hero-left .content{ position:relative; padding:28px; }
+
+    .kicker{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      color:var(--muted);
+      font-size:12px;
+      margin-bottom:16px;
     }
 
-    .card h3{
-      margin-bottom:8px;
-      font-size:16px;
+    h1{
+      margin:0 0 10px;
+      font-family:"Lora", serif;
+      font-size:42px;
+      line-height:1.15;
+      letter-spacing:.2px;
+    }
+    .lead{
+      margin:0 0 18px;
+      color:rgba(255,255,255,.78);
+      font-size:14px;
+      max-width: 60ch;
+    }
+    .hero-actions{ display:flex; flex-wrap:wrap; gap:10px; margin-top:10px; }
+    .mini{ display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; color:var(--muted); font-size:12px; }
+
+    .panel-title{
+      font-family:"Grand Hotel", cursive;
+      font-size:34px;
+      margin:0 0 8px;
+      color:rgba(255,255,255,.94);
+    }
+    .panel-sub{ margin:0 0 14px; color:var(--muted); font-size:13px; }
+
+    .list{ display:grid; gap:10px; margin-top:12px; }
+    .li{
+      display:flex; gap:12px; align-items:flex-start;
+      padding:12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+    }
+    .badge{
+      width:34px; height:34px; border-radius:12px;
+      background:linear-gradient(180deg, rgba(0,201,255,.18), rgba(0,242,96,.12));
+      border:1px solid rgba(255,255,255,.10);
+      display:flex; align-items:center; justify-content:center;
+      font-weight:800;
+      color:rgba(255,255,255,.88);
+      flex:0 0 auto;
+    }
+    .li strong{ display:block; font-size:13px; }
+    .li span{ display:block; font-size:12px; color:var(--muted); margin-top:2px; }
+
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:16px;
+      margin-bottom:18px;
+    }
+    .section-title h2{
+      margin:0;
+      font-family:"Lora", serif;
+      font-size:28px;
+      letter-spacing:.2px;
+    }
+    .section-title p{
+      margin:0;
+      color:var(--muted);
+      max-width: 560px;
+      font-size:13px;
     }
 
-    .card p{
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .feature h3{
+      margin:0 0 6px;
+      font-size:14px;
+      letter-spacing:.2px;
+    }
+    .feature p{
+      margin:0;
       color:var(--muted);
       font-size:13px;
     }
 
-    section{
-      padding:50px 0;
+    .services{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:14px;
+    }
+    .service{
+      padding:16px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+    }
+    .service h4{ margin:2px 0 6px; font-size:14px; }
+    .service p{ margin:0; font-size:13px; color:var(--muted); }
+    .tagrow{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+    .tag{
+      font-size:11px;
+      color:rgba(255,255,255,.80);
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
     }
 
-    h2{
+    .contact{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    .contact h3{
+      margin:0 0 10px;
       font-family:"Lora", serif;
-      font-size:26px;
-      margin-bottom:20px;
-      text-align:center;
+      font-size:20px;
     }
+    .contact p{ margin:0 0 14px; color:var(--muted); font-size:13px; }
 
-    .contact-box{
-      text-align:center;
-      background:var(--card);
-      border:1px solid var(--border);
-      padding:30px;
-      border-radius:18px;
+    .kv{ display:grid; gap:10px; margin-top:12px; }
+    .kv .row{
+      display:flex; gap:10px; flex-wrap:wrap;
+      padding:12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      align-items:center;
+      justify-content:space-between;
     }
+    .kv .row small{ color:var(--muted); }
+
+    .mapbox{
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(700px 300px at 30% 20%, rgba(0,201,255,.18), transparent 55%),
+        radial-gradient(700px 300px at 80% 30%, rgba(0,242,96,.14), transparent 55%),
+        rgba(255,255,255,.04);
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      min-height: 220px;
+    }
+    .mapbox .muted{ color:var(--muted); font-size:12px; }
 
     footer{
-      margin-top:40px;
-      padding:30px 0;
-      border-top:1px solid rgba(255,255,255,.08);
-      text-align:center;
+      padding:26px 0 34px;
+      border-top:1px solid rgba(255,255,255,.06);
       color:var(--muted);
       font-size:12px;
+    }
+    .footer{
+      display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:flex-start;
+    }
+    .footer img{ height:28px; width:auto; opacity:.95; }
+
+    @media (max-width: 980px){
+      .hero{ grid-template-columns: 1fr; }
+      .services{ grid-template-columns: repeat(2, 1fr); }
+      .grid-3{ grid-template-columns: 1fr; }
+      .contact{ grid-template-columns: 1fr; }
+      .links{ display:none; }
+    }
+    @media (max-width: 520px){
+      h1{ font-size:34px; }
+      .services{ grid-template-columns: 1fr; }
+      .brand img{ height:30px; }
     }
   </style>
 </head>
 
 <body>
-
-<header>
-  <div class="container nav">
-    <div class="logo">Your Mind Matters!</div>
-    <div>
-      <a class="btn" href="tel:+92XXXXXXXXXX">Call Now</a>
-      <a class="btn btn-primary" href="#contact">Book Appointment</a>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="pill"><span class="dot"></span> Premium private mental health center • Karachi</div>
+      <div class="pill">Phone booking: <strong style="color:rgba(255,255,255,.9)">+92XXXXXXXXXX</strong></div>
     </div>
   </div>
-</header>
 
-<div class="container hero">
-  <h1>Confidential, Evidence-Based Mental Health Care</h1>
-  <p class="lead">
-    AlSyed Psychiatric Institute (ASPI) is a premium private mental health center in Karachi,
-    providing clinical psychiatry, therapy, addiction services, and inpatient & outpatient care.
-  </p>
-
-  <div>
-    <a class="btn btn-primary" href="tel:+92XXXXXXXXXX">Book by Phone</a>
-  </div>
-
-  <div class="grid">
-    <div class="card">
-      <h3>Clinical Psychiatry</h3>
-      <p>Diagnosis, treatment planning, medication management, and specialist consultations.</p>
-    </div>
-
-    <div class="card">
-      <h3>Therapy & Counseling</h3>
-      <p>Individual, family, couples, and evidence-based psychological interventions.</p>
-    </div>
-
-    <div class="card">
-      <h3>Addiction Services</h3>
-      <p>Structured recovery pathways, relapse prevention, and clinical support.</p>
-    </div>
-
-    <div class="card">
-      <h3>Inpatient & Outpatient</h3>
-      <p>Comprehensive care options for both males and females.</p>
-    </div>
-  </div>
-</div>
-
-<section>
-  <div class="container">
-    <h2>Why Choose ASPI</h2>
-
-    <div class="grid">
-      <div class="card">
-        <h3>Multi-Specialist Institute</h3>
-        <p>Psychiatrists & psychologists working collaboratively.</p>
-      </div>
-
-      <div class="card">
-        <h3>Male & Female Facilities</h3>
-        <p>Comfortable, structured, respectful care environments.</p>
-      </div>
-
-      <div class="card">
-        <h3>Confidential & Discreet</h3>
-        <p>Privacy-first clinical approach.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="container">
-    <h2>Contact & Appointments</h2>
-
-    <div class="contact-box">
-      <p style="color:var(--muted); margin-bottom:15px;">
-        Currently accepting appointments via phone.
-      </p>
-
-      <a class="btn btn-primary" href="tel:+92XXXXXXXXXX">
-        +92 XXXXXXXXXX
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="ASPI Home">
+        <!-- Put your logo image inside /assets -->
+        <img src="./assets/wordmark_white.png" alt="AlSyed Psychiatric Institute (ASPI)" />
       </a>
 
-      <p style="margin-top:20px; color:var(--muted); font-size:13px;">
-        Shop #3, Building LS-5, Block 10-A Gulshan-e-Iqbal, Karachi  
-        (Behind Lal Flats)
-      </p>
+      <div class="links" aria-label="Primary navigation">
+        <a href="#services">Services</a>
+        <a href="#facility">Facilities</a>
+        <a href="#team">Specialists</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="actions">
+        <a class="btn" href="tel:+92XXXXXXXXXX">Call Now</a>
+        <a class="btn btn-primary" href="#contact">Book Appointment</a>
+      </div>
     </div>
-  </div>
-</section>
+  </header>
 
-<footer>
-  © 2026 AlSyed Psychiatric Institute (ASPI). All Rights Reserved.
-</footer>
+  <main id="home">
+    <div class="container hero">
+      <div class="card hero-left">
+        <div class="content">
+          <div class="kicker">
+            <span class="dot"></span>
+            Multi-specialist • Psychiatrists & Psychologists • Inpatient & Outpatient
+          </div>
 
+          <h1>Confidential, evidence-based care for every mind.</h1>
+          <p class="lead">
+            AlSyed Psychiatric Institute (ASPI) is a premium private mental health center in Gulshan-e-Iqbal, Karachi,
+            offering clinical psychiatry, therapy, and addiction services for both males and females.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="tel:+92XXXXXXXXXX">Book by Phone</a>
+            <a class="btn" href="#services">Explore Services</a>
+            <a class="btn" href="#facility">Inpatient & Outpatient</a>
+          </div>
+
+          <div class="mini">
+            <span class="pill">Male & Female Facilities</span>
+            <span class="pill">Discreet & Private</span>
+            <span class="pill">Treatment Plans</span>
+            <span class="pill">Family Support</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card pad soft">
+        <p class="panel-title">Your mind matters!</p>
+        <p class="panel-sub">
+          Specialist-led care across psychiatry, psychology, and addiction—delivered in a calm, private environment.
+        </p>
+
+        <div class="list" aria-label="Highlights">
+          <div class="li">
+            <div class="badge">01</div>
+            <div>
+              <strong>Clinical Psychiatry</strong>
+              <span>Assessment, diagnosis, medication management, follow-ups.</span>
+            </div>
+          </div>
+          <div class="li">
+            <div class="badge">02</div>
+            <div>
+              <strong>Therapy & Counseling</strong>
+              <span>Individual, family, couples, trauma-informed therapy.</span>
+            </div>
+          </div>
+          <div class="li">
+            <div class="badge">03</div>
+            <div>
+              <strong>Addiction Services</strong>
+              <span>Substance use assessment, relapse prevention, recovery plans.</span>
+            </div>
+          </div>
+          <div class="li">
+            <div class="badge">04</div>
+            <div>
+              <strong>Inpatient & Outpatient</strong>
+              <span>Structured care options for varying levels of support.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Why ASPI</h2>
+          <p>Premium, discreet, specialist-led care—built around safety, privacy, and outcomes.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card pad feature">
+          <h3>Multi-Specialist Institute</h3>
+          <p>Psychiatrists and psychologists working together for comprehensive, coordinated treatment.</p>
+        </div>
+        <div class="card pad feature">
+          <h3>Male & Female Facilities</h3>
+          <p>Comfortable, respectful care environments suitable for both males and females.</p>
+        </div>
+        <div class="card pad feature">
+          <h3>Confidential & Discreet</h3>
+          <p>Consultations and care pathways handled with strict confidentiality.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Services</h2>
+          <p>Clinical psychiatry + therapy + addiction, delivered in a premium private setting.</p>
+        </div>
+      </div>
+
+      <div class="services">
+        <div class="service">
+          <h4>Depression & Mood Disorders</h4>
+          <p>Clinical evaluation, medication management, therapy plans, follow-ups.</p>
+          <div class="tagrow"><span class="tag">Psychiatry</span><span class="tag">Therapy</span></div>
+        </div>
+
+        <div class="service">
+          <h4>Anxiety, Panic & OCD</h4>
+          <p>Evidence-based treatment plans to reduce symptoms and restore daily function.</p>
+          <div class="tagrow"><span class="tag">CBT</span><span class="tag">Clinical Care</span></div>
+        </div>
+
+        <div class="service">
+          <h4>Trauma & PTSD</h4>
+          <p>Trauma-informed therapy and psychiatric support when needed.</p>
+          <div class="tagrow"><span class="tag">Trauma-Informed</span><span class="tag">Recovery</span></div>
+        </div>
+
+        <div class="service">
+          <h4>Addiction & Substance Use</h4>
+          <p>Assessment, structured support, relapse prevention, and recovery planning.</p>
+          <div class="tagrow"><span class="tag">Addiction</span><span class="tag">Recovery</span></div>
+        </div>
+
+        <div class="service">
+          <h4>Psychosis & Severe Mental Illness</h4>
+          <p>Specialist-led evaluation, stabilization planning, and ongoing care.</p>
+          <div class="tagrow"><span class="tag">Psychiatry</span><span class="tag">Inpatient</span></div>
+        </div>
+
+        <div class="service">
+          <h4>Family, Couples & Caregiver Support</h4>
+          <p>Therapeutic support for families navigating complex mental health challenges.</p>
+          <div class="tagrow"><span class="tag">Family</span><span class="tag">Counseling</span></div>
+        </div>
+
+        <div class="service">
+          <h4>Child & Adolescent Support</h4>
+          <p>Age-appropriate evaluation and therapy pathways (as applicable).</p>
+          <div class="tagrow"><span class="tag">Psychology</span><span class="tag">Support</span></div>
+        </div>
+
+        <div class="service">
+          <h4>Premium Private Consultations</h4>
+          <p>Discreet appointments, structured plans, continuity of care.</p>
+          <div class="tagrow"><span class="tag">Private</span><span class="tag">Confidential</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="facility">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Inpatient & Outpatient Facilities</h2>
+          <p>Care options tailored to the level of support required—while maintaining privacy and dignity.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card pad feature">
+          <h3>Outpatient Care</h3>
+          <p>Consultations, therapy sessions, follow-ups, and ongoing care plans.</p>
+        </div>
+        <div class="card pad feature">
+          <h3>Inpatient Care</h3>
+          <p>Structured support and supervision for individuals needing higher levels of care.</p>
+        </div>
+        <div class="card pad feature">
+          <h3>Male & Female Facilities</h3>
+          <p>Appropriate arrangements for comfort, safety, and respect.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="team">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Our Specialists</h2>
+          <p>Add doctor profiles (name, qualifications, specialties, clinic hours) when you’re ready.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card pad feature">
+          <h3>Psychiatrists</h3>
+          <p>Clinical evaluation, diagnosis, medication management, and continuity of care.</p>
+        </div>
+        <div class="card pad feature">
+          <h3>Psychologists</h3>
+          <p>Therapy and counseling with evidence-based approaches tailored to each patient.</p>
+        </div>
+        <div class="card pad feature">
+          <h3>Support Team</h3>
+          <p>Care coordination, scheduling, and patient support with discretion.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-title">
+        <div>
+          <h2>Contact & Appointments</h2>
+          <p>Currently booking via phone. WhatsApp and online booking can be enabled in the future.</p>
+        </div>
+      </div>
+
+      <div class="contact">
+        <div class="card pad">
+          <h3>Book an appointment</h3>
+          <p>Call to schedule an appointment. If you feel unsafe or it’s an emergency, seek immediate emergency help.</p>
+
+          <div class="kv">
+            <div class="row">
+              <div>
+                <strong>Phone</strong><br />
+                <small>Primary booking method (now)</small>
+              </div>
+              <a class="btn btn-primary" href="tel:+92XXXXXXXXXX">+92XXXXXXXXXX</a>
+            </div>
+
+            <div class="row">
+              <div>
+                <strong>WhatsApp</strong><br />
+                <small>Integration planned (future)</small>
+              </div>
+              <span class="btn" aria-disabled="true" style="opacity:.7; cursor:not-allowed;">Coming Soon</span>
+            </div>
+
+            <div class="row">
+              <div>
+                <strong>Online Booking</strong><br />
+                <small>Calendar / form (future)</small>
+              </div>
+              <span class="btn" aria-disabled="true" style="opacity:.7; cursor:not-allowed;">Coming Soon</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mapbox">
+          <div>
+            <h3 style="margin:0 0 8px; font-family:'Lora', serif;">Visit us in Karachi</h3>
+            <div class="muted">
+              Shop #3, Building LS-5, Block 10-A, Gulshan-e-Iqbal, Karachi (Behind Lal Flats)
+            </div>
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;">
+            <!-- Replace # with your Google Maps link when you have it -->
+            <a class="btn" href="#" target="_blank" rel="noopener">Open in Google Maps</a>
+            <a class="btn" href="#services">View Services</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer">
+      <div style="display:flex; gap:12px; align-items:center;">
+        <img src="./assets/wordmark_white.png" alt="ASPI" />
+        <div>
+          <div><strong style="color:rgba(255,255,255,.88)">AlSyed Psychiatric Institute (ASPI)</strong></div>
+          <div>Gulshan-e-Iqbal, Karachi • Confidential mental health care</div>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn" href="#contact">Contact</a>
+        <a class="btn" href="#services">Services</a>
+        <a class="btn" href="#facility">Facilities</a>
+      </div>
+    </div>
+
+    <div class="container" style="margin-top:16px; color:rgba(255,255,255,.55);">
+      © <span id="yr"></span> ASPI. All rights reserved.
+    </div>
+
+    <script>
+      document.getElementById("yr").textContent = new Date().getFullYear();
+    </script>
+  </footer>
 </body>
 </html>
